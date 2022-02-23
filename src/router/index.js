@@ -115,14 +115,14 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/unixtime',
+    path: '/time',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Unix时间戳',
-        component: () => import('@/views/unixtime/index'),
-        meta: { title: 'Unix时间戳', icon: 'form' }
+        name: '时间戳工具',
+        component: () => import('@/views/time/index'),
+        meta: { title: '时间戳工具', icon: 'form' }
       }
     ]
   },

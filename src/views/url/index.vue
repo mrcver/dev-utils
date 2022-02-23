@@ -1,73 +1,32 @@
 <template>
   <div class="app-container">
-    <el-row>
-      <el-col :span="10" class="right-padding">
-        <div class="tool-buttons">
-          <el-button type="primary" @click="encodeText">Url编码</el-button>
-          <el-button type="primary" @click="decodeText">Url解码</el-button>
-          <el-button type="primary" @click="clearText">清空</el-button>
-        </div>
-        <div>
-          <el-input
-            v-model="originText"
-            type="textarea"
-            rows="20"
-            :show-word-limit="true"
-          />
-        </div>
-      </el-col>
-      <el-col :span="10">
-        <div class="tool-buttons">
-          <cpp />
-        </div>
-        <div>
-          <el-input
-            id="transferText"
-            v-model="transferText"
-            type="textarea"
-            rows="20"
-            readonly
-          />
-        </div>
-      </el-col>
-    </el-row>
+    <base-tool
+      ref="base"
+      encode-btn-name="Url编码"
+      decode-btn-name="Url解码"
+      :decode-action="decodeText"
+      :encode-action="encodeText"
+    />
   </div>
 </template>
 
 <script>
-import Cpp from '@/components/Cpp'
+import BaseTool from '@/components/Tool/base'
 export default {
   components: {
-    Cpp
-  },
-  data() {
-    return {
-      originText: '',
-      transferText: ''
-    }
+    BaseTool
   },
   methods: {
     encodeText() {
-      this.transferText = encodeURI(this.originText)
+      this.$refs.base.transferText = encodeURI(this.$refs.base.originText)
     },
     decodeText() {
-      this.transferText = decodeURI(this.originText)
-    },
-    clearText() {
-      this.originText = ''
-      this.transferText = ''
+      this.$refs.base.transferText = decodeURI(this.$refs.base.originText)
     }
   }
 }
 </script>
 
 <style scoped>
-.right-padding {
-  margin-right: 10px;
-}
-
-.tool-buttons {
-  margin-bottom: 10px;
-}
 </style>
 

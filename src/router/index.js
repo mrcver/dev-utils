@@ -115,6 +115,18 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/json',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'JsonViewer',
+        component: () => import('@/views/json/index'),
+        meta: { title: 'JsonViewer', icon: 'form' }
+      }
+    ]
+  },
+  {
     path: '/time',
     component: Layout,
     children: [

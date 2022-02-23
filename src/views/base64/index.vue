@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import Clipboard from 'clipboard'
 import Cpp from '@/components/Cpp'
 export default {
   components: {
@@ -57,28 +56,6 @@ export default {
     clearText() {
       this.originText = ''
       this.transferText = ''
-    },
-    copy() {
-      if (this.transferText === '') {
-        this.$message.error('内容为空，无法复制')
-        return
-      }
-      const clipboard = new Clipboard('#copyBtn', {
-        text() {
-          console.log(this.transferText)
-          return this.transferText
-        }
-      })
-      clipboard.on('success', e => {
-        this.$message.success('复制成功')
-        // 释放内存
-        clipboard.destroy()
-      })
-      clipboard.on('error', e => {
-        this.$message.error('复制失败')
-        // 释放内存
-        clipboard.destroy()
-      })
     }
   }
 }

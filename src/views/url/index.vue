@@ -1,21 +1,45 @@
 <template>
   <div class="app-container">
-    <div>
-      <el-input v-model="originText" type="textarea" />
-    </div>
-    <div>
-      <el-button type="primary" @click="encodeText">Url编码</el-button>
-      <el-button type="primary" @click="decodeText">Url解码</el-button>
-      <el-button type="primary" @click="clearText">清空</el-button>
-    </div>
-    <div>
-      <el-input v-model="transferText" type="textarea" />
-    </div>
+    <el-row>
+      <el-col :span="10" class="right-padding">
+        <div class="tool-buttons">
+          <el-button type="primary" @click="encodeText">Url编码</el-button>
+          <el-button type="primary" @click="decodeText">Url解码</el-button>
+          <el-button type="primary" @click="clearText">清空</el-button>
+        </div>
+        <div>
+          <el-input
+            v-model="originText"
+            type="textarea"
+            rows="20"
+            :show-word-limit="true"
+          />
+        </div>
+      </el-col>
+      <el-col :span="10">
+        <div class="tool-buttons">
+          <cpp />
+        </div>
+        <div>
+          <el-input
+            id="transferText"
+            v-model="transferText"
+            type="textarea"
+            rows="20"
+            readonly
+          />
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
+import Cpp from '@/components/Cpp'
 export default {
+  components: {
+    Cpp
+  },
   data() {
     return {
       originText: '',
@@ -27,7 +51,7 @@ export default {
       this.transferText = encodeURI(this.originText)
     },
     decodeText() {
-      this.originText = decodeURI(this.transferText)
+      this.transferText = decodeURI(this.originText)
     },
     clearText() {
       this.originText = ''
@@ -38,5 +62,12 @@ export default {
 </script>
 
 <style scoped>
+.right-padding {
+  margin-right: 10px;
+}
+
+.tool-buttons {
+  margin-bottom: 10px;
+}
 </style>
 

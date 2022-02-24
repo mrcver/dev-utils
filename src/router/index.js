@@ -98,6 +98,18 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/jwt',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'JWT',
+        component: () => import('@/views/jwt/index'),
+        meta: { title: 'JWT', icon: 'form' }
+      }
+    ]
+  },
+  {
     path: 'external-link',
     component: Layout,
     children: [

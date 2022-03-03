@@ -123,6 +123,18 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/unicode',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Unicode',
+        component: () => import('@/views/unicode/index'),
+        meta: { title: 'Unicode中文互转', icon: 'form' }
+      }
+    ]
+  },
+  {
     path: 'external-link',
     component: Layout,
     children: [

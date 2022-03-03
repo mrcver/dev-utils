@@ -62,6 +62,19 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/md5',
+    name: 'MD5',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'MD5',
+        component: () => import('@/views/md5/index'),
+        meta: { title: 'MD5加密', icon: 'form' }
+      }
+    ]
+  },
+  {
     path: '/url',
     component: Layout,
     children: [
@@ -115,7 +128,7 @@ export const constantRoutes = [
     children: [
       {
         path: 'https://xhdoc.com',
-        meta: { title: 'Blog', icon: 'link' }
+        meta: { title: '个人博客', icon: 'link' }
       }
     ]
   },
